@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 12/05/2020 19:29:38
+ Date: 15/05/2020 20:10:06
 */
 
 SET NAMES utf8mb4;
@@ -2975,21 +2975,22 @@ CREATE TABLE `t_test`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `t_user`;
 CREATE TABLE `t_user`  (
-  `user_id` bigint(10) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `id` bigint(10) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '用户名',
   `password` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '密码',
   `dept_id` bigint(20) NULL DEFAULT NULL COMMENT '部门ID',
   `email` varchar(128) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '邮箱',
   `mobile` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '联系电话',
   `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态 0锁定 1有效',
-  `create_time` datetime(0) NOT NULL COMMENT '创建时间',
-  `modify_time` datetime(0) NULL DEFAULT NULL COMMENT '修改时间',
-  `last_login_time` datetime(0) NULL DEFAULT NULL COMMENT '最近访问时间',
+  `create_time` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '创建时间',
+  `modify_time` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '修改时间',
+  `last_login_time` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '最近访问时间',
   `ssex` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '性别 0男 1女 2保密',
   `description` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '描述',
   `avatar` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '用户头像',
   `type` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '0' COMMENT '用户类型 0:单位用户 1:审核用户 2:管理员',
-  PRIMARY KEY (`user_id`) USING BTREE,
+  `token` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '无状态token',
+  PRIMARY KEY (`id`) USING BTREE,
   INDEX `t_user_type_index`(`type`) USING BTREE,
   INDEX `t_user_status_index`(`status`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 81 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '用户管理' ROW_FORMAT = Dynamic;
@@ -2997,45 +2998,45 @@ CREATE TABLE `t_user`  (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES (1, 'admin', 'ac9484b23a43a694fa3f5a322be75722', 1, 'admin@hotmail.com', '13455533233', '1', '2017-12-27 15:47:19', '2019-01-17 02:34:19', '2020-03-25 03:10:56', '2', '管理员。', 'ubnKSIfAJTxIgXOKlciN.png', '2');
-INSERT INTO `t_user` VALUES (2, 'audit', 'fb6a7a8be3c067ed4666de93d7ccee2a', 6, 'scott@qq.com', '15134627380', '1', '2017-12-29 16:16:39', '2019-01-18 00:59:09', '2020-03-25 06:40:33', '0', '审核用户', 'gaOngJwsRYRaVAuXXcmB.png', '1');
-INSERT INTO `t_user` VALUES (25, '阳江市勘察测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:10', NULL, '2020-03-24 10:13:53', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (26, '阳江市华纳土地房地产资产评估有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:26', NULL, '2020-03-25 03:09:16', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (27, '阳江市正德设计咨询有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:37', NULL, '2020-03-23 09:08:09', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (28, '阳春市建设测量队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:44', NULL, '2020-03-24 02:51:10', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (29, '阳江市国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:52', NULL, '2020-03-20 12:49:48', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (30, '阳东县测量队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:59', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (31, '阳江市水利水电勘测设计有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:07', NULL, '2020-03-24 02:15:59', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (32, '阳江市永烽测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:14', NULL, '2020-03-16 09:01:23', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (33, '阳西县经纬勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:21', NULL, '2020-03-20 04:42:57', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (34, '阳江市江城区广信勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:31', NULL, '2020-03-11 03:45:43', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (35, '阳春市漠阳测绘技术有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:38', NULL, '2020-03-23 09:08:29', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (36, '阳江市立德隆测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:45', NULL, '2020-03-12 08:53:03', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (37, '阳江市昭成测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:51', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (38, '阳江市江城区卓越测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:03', NULL, '2020-03-25 03:01:14', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (39, '阳西县国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:10', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (40, '阳江市住房和城乡规划建设局海陵分局勘察测绘所', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:17', NULL, '2020-03-11 07:44:41', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (41, '阳春市房地产测绘所', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:24', NULL, '2020-02-27 02:50:05', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (42, '阳西县全方测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:29', NULL, '2020-03-11 02:35:41', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (43, '阳春市国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:34', NULL, '2019-12-19 01:16:54', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (44, '阳江市中恒土地评估有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:39', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (45, '阳东县国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:45', NULL, '2019-12-19 09:13:28', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (46, '阳江测绘工程', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-20 03:33:04', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (47, '阳江市江城区卓越测绘', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-17 06:31:42', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (49, '阳江市江城区广信勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 01:40:23', NULL, '2020-03-11 03:45:43', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (51, '阳江市正德设计咨询有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 02:13:17', NULL, '2020-03-23 09:08:09', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (53, '深圳中铭高科信息产业股份有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 07:51:49', NULL, '2020-03-13 01:26:06', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (54, '广东省地质测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 10:25:07', NULL, '2020-03-11 03:04:11', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (56, '阳江市勘察测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 02:18:53', NULL, '2020-03-24 10:13:53', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (57, '深圳市勘察研究院有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 02:37:40', NULL, '2020-01-20 03:51:16', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (58, '中山市测绘工程有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 03:14:50', NULL, '2020-03-18 09:09:36', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (60, '广州全成多维信息技术有限公司阳江分公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 13:24:05', NULL, '2020-03-16 08:03:54', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (62, '广东广量测绘信息技术有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-20 01:02:13', NULL, '2020-01-20 07:47:26', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (63, '深圳地质建设工程公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-20 01:48:52', NULL, '2020-01-20 07:22:08', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (66, '广州博瑞信息技术股份有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-11 09:27:27', NULL, '2020-03-18 07:39:57', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (71, '建材广州工程勘测院有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-17 07:25:44', NULL, NULL, '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (79, '测绘地理信息监管与服务平台演示专用', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-25 04:02:27', NULL, '2020-03-25 04:26:10', '2', NULL, 'default.jpg', '0');
-INSERT INTO `t_user` VALUES (80, '测试数据待删除', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-25 04:06:55', NULL, NULL, '2', NULL, 'default.jpg', '0');
+INSERT INTO `t_user` VALUES (1, 'admin', 'ac9484b23a43a694fa3f5a322be75722', 1, 'admin@hotmail.com', '13455533233', '1', '2017-12-27 15:47:19', '2019-01-17 02:34:19', '2020-03-25 03:10:56', '2', '管理员。', 'ubnKSIfAJTxIgXOKlciN.png', '2', '');
+INSERT INTO `t_user` VALUES (2, 'audit', 'fb6a7a8be3c067ed4666de93d7ccee2a', 6, 'scott@qq.com', '15134627380', '1', '2017-12-29 16:16:39', '2019-01-18 00:59:09', '2020-03-25 06:40:33', '0', '审核用户', 'gaOngJwsRYRaVAuXXcmB.png', '1', '');
+INSERT INTO `t_user` VALUES (25, '阳江市勘察测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:10', NULL, '2020-03-24 10:13:53', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (26, '阳江市华纳土地房地产资产评估有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:26', NULL, '2020-03-25 03:09:16', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (27, '阳江市正德设计咨询有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:37', NULL, '2020-03-23 09:08:09', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (28, '阳春市建设测量队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:44', NULL, '2020-03-24 02:51:10', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (29, '阳江市国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:52', NULL, '2020-03-20 12:49:48', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (30, '阳东县测量队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:58:59', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (31, '阳江市水利水电勘测设计有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:07', NULL, '2020-03-24 02:15:59', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (32, '阳江市永烽测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:14', NULL, '2020-03-16 09:01:23', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (33, '阳西县经纬勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:21', NULL, '2020-03-20 04:42:57', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (34, '阳江市江城区广信勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:31', NULL, '2020-03-11 03:45:43', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (35, '阳春市漠阳测绘技术有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:38', NULL, '2020-03-23 09:08:29', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (36, '阳江市立德隆测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:45', NULL, '2020-03-12 08:53:03', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (37, '阳江市昭成测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 06:59:51', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (38, '阳江市江城区卓越测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:03', NULL, '2020-03-25 03:01:14', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (39, '阳西县国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:10', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (40, '阳江市住房和城乡规划建设局海陵分局勘察测绘所', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:17', NULL, '2020-03-11 07:44:41', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (41, '阳春市房地产测绘所', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:24', NULL, '2020-02-27 02:50:05', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (42, '阳西县全方测绘有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:29', NULL, '2020-03-11 02:35:41', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (43, '阳春市国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:34', NULL, '2019-12-19 01:16:54', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (44, '阳江市中恒土地评估有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:39', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (45, '阳东县国土资源局测绘队', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-12 07:00:45', NULL, '2019-12-19 09:13:28', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (46, '阳江测绘工程', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2019-12-20 03:33:04', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (47, '阳江市江城区卓越测绘', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-17 06:31:42', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (49, '阳江市江城区广信勘测有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 01:40:23', NULL, '2020-03-11 03:45:43', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (51, '阳江市正德设计咨询有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 02:13:17', NULL, '2020-03-23 09:08:09', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (53, '深圳中铭高科信息产业股份有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 07:51:49', NULL, '2020-03-13 01:26:06', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (54, '广东省地质测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-18 10:25:07', NULL, '2020-03-11 03:04:11', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (56, '阳江市勘察测绘院', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 02:18:53', NULL, '2020-03-24 10:13:53', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (57, '深圳市勘察研究院有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 02:37:40', NULL, '2020-01-20 03:51:16', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (58, '中山市测绘工程有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 03:14:50', NULL, '2020-03-18 09:09:36', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (60, '广州全成多维信息技术有限公司阳江分公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-19 13:24:05', NULL, '2020-03-16 08:03:54', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (62, '广东广量测绘信息技术有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-20 01:02:13', NULL, '2020-01-20 07:47:26', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (63, '深圳地质建设工程公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-01-20 01:48:52', NULL, '2020-01-20 07:22:08', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (66, '广州博瑞信息技术股份有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-11 09:27:27', NULL, '2020-03-18 07:39:57', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (71, '建材广州工程勘测院有限公司', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-17 07:25:44', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (79, '测绘地理信息监管与服务平台演示专用', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-25 04:02:27', NULL, '2020-03-25 04:26:10', '2', NULL, 'default.jpg', '0', '');
+INSERT INTO `t_user` VALUES (80, '测试数据待删除', '9dbcb5c4f5d3300356fce2bb5ddc5f52', NULL, NULL, NULL, '1', '2020-03-25 04:06:55', NULL, NULL, '2', NULL, 'default.jpg', '0', '');
 
 -- ----------------------------
 -- Table structure for t_user_config
