@@ -1,9 +1,9 @@
-package com.eight.controller;
+package com.eight.controller.login;
 
 
-import com.eight.model.User;
+import com.eight.model.login.User;
 import com.eight.redis.RedisService;
-import com.eight.service.LoginService;
+import com.eight.service.login.LoginService;
 import com.eight.vo.TokenVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

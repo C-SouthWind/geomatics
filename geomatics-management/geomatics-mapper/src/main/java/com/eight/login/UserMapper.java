@@ -1,6 +1,6 @@
-package com.eight;
+package com.eight.login;
 
-import com.eight.model.User;
+import com.eight.model.login.User;
 import tk.mybatis.mapper.common.Mapper;
 
 /**

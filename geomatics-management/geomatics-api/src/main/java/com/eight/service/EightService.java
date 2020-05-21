@@ -1,6 +1,6 @@
 package com.eight.service;
 
-import com.eight.model.User;
+import com.eight.model.login.User;
 import com.eight.vo.TokenVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,4 +1,4 @@
-package com.eight.model;
+package com.eight.model.login;
 
 
 import com.eight.base.BaseModel;

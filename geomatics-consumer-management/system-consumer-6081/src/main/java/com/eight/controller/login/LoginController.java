@@ -1,9 +1,9 @@
-package com.eight.controller;
+package com.eight.controller.login;
 
 
 import com.eight.base.BaseController;
 import com.eight.base.ResultData;
-import com.eight.model.User;
+import com.eight.model.login.User;
 import com.eight.service.EightService;
 import com.eight.vo.TokenVo;
 import io.swagger.annotations.Api;

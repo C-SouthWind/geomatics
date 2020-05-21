@@ -1,8 +1,8 @@
-package com.eight.service;
+package com.eight.service.login;
 
 
-import com.eight.UserMapper;
-import com.eight.model.User;
+import com.eight.login.UserMapper;
+import com.eight.model.login.User;
 import com.eight.redis.RedisService;
 import com.eight.utils.IDUtils;
 import com.eight.vo.TokenVo;
