@@ -1,4 +1,4 @@
-package com.eight.home;
+package com.eight.mapper.home;
 
 /**
  * @author ：chj
