@@ -36,10 +36,11 @@
 			单位注册待审核（cjl）
 
 
-类命名规则
-	xx（Service / Controller / Mapper）
-方法命名规则
-	表名+（crud）+ （By）+（xxx）
+
+	类命名规则
+		xx（Service / Controller / Mapper）
+	方法命名规则
+		表名+（crud）+ （By）+（xxx）
 
 
 
