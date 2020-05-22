@@ -35,6 +35,14 @@
 			单位修改待审核（cjl）
 			单位注册待审核（cjl）
 
+
+类命名规则
+	xx（Service / Controller / Mapper）
+方法命名规则
+	表名+（crud）+ （By）+（xxx）
+
+
+
 geomatics
 	包括：
 
