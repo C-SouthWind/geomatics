@@ -48,7 +48,7 @@ geomatics
 			geomatics-api
 			geomatics-mapper
 			geomatics-model
-			geomatics-sservice
+			geomatics-service
 
 		cehui-provider-management（生产者父级项目）
 			system-provdier-8081
