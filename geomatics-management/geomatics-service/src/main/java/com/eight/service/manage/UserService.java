@@ -1,13 +1,17 @@
 package com.eight.service.manage;
 
+import com.eight.base.ResultData;
 import com.eight.mapper.login.UserMapper;
 import com.eight.model.login.User;
 import com.eight.redis.RedisService;
+import com.eight.utils.GainDate;
+import com.eight.utils.IDUtils;
 import com.eight.utils.NotEmpty;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -23,9 +27,114 @@ public class UserService {
     @Autowired
     private UserMapper userMapper;
 
-   /** 方法描述
+    /** 方法描述 
+    * @Description: 密码重置
+    * @Param: [user]
+    * @return: com.eight.base.ResultData
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public Integer userResetPassword(User user){
+        if (NotEmpty.objectNotEmpty(user)) {
+            user.setPassword("123456");
+            user.setToken(IDUtils.getUUID());
+            user.setCreateTime(GainDate.getDate());
+            int i = userMapper.updateByPrimaryKey(user);
+            if (NotEmpty.integerNotEmpty(i)) {
+                return i;
+            }
+            return null;
+        }
+        return null;
+    }
+    
+
+    /** 方法描述
+    * @Description: 系统管理--->用户管理
+     *                  根据user表  修改信息
+    * @Param: [user]
+    * @return: com.eight.base.ResultData
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public Integer userUpdateByUser( User user){
+        if (NotEmpty.objectNotEmpty(user)) {
+            int i = userMapper.updateByPrimaryKey(user);
+            if (NotEmpty.integerNotEmpty(i)) {
+                return i;
+            }
+            return null;
+        }
+        return null;
+    }
+
+
+    /** 方法描述
+    * @Description: 系统管理--->用户管理
+     *                      根据user表  查询单个信息
+    * @Param: [user]
+    * @return: com.eight.base.ResultData
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public User userSelectOneByUser(User user){
+        if (NotEmpty.objectNotEmpty(user)) {
+            User user1 = userMapper.selectOne(user);
+            if (NotEmpty.objectNotEmpty(user1)) {
+                return user1;
+            }
+            return null;
+        }
+        return null;
+    }
+
+    /** 方法描述
+    * @Description: 系统管理--->用户管理
+     *                      根据user表对象新增用户
+    * @Param: [user]
+    * @return: com.eight.base.ResultData
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public Integer userInsertByUser(User user){
+        if (NotEmpty.objectNotEmpty(user)) {
+            user.setCreateTime(GainDate.getDate());
+            user.setToken(IDUtils.getUUID());
+            int insert = userMapper.insert(user);
+            if (NotEmpty.integerNotEmpty(insert)) {
+                return insert;
+            }
+            return null;
+        }
+        return null;
+    }
+
+
+
+    /** 方法描述
+    * @Description: 系统管理--->用户管理
+     *                      根据user表对象删除用户
+    * @Param: [user]
+    * @return: java.lang.Integer
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public Integer userDeleteByuser(User user){
+        if (NotEmpty.objectNotEmpty(user)) {
+            int delete = userMapper.delete(user);
+            if (NotEmpty.integerNotEmpty(delete)) {
+                return delete;
+            }
+            return null;
+        }
+        return null;
+    }
+
+
+
+                                       /** 方法描述
    * @Description: 分页条件查询
-    *                   系统管理--->用户管理       user
+    *                   系统管理--->用户管理       user表
    * @Param: [map, redisService]
    * @return: com.github.pagehelper.PageInfo<com.eight.model.login.User>
    * @Author: chj
