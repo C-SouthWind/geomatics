@@ -16,7 +16,7 @@
 		测绘成果（hxy）（t_result_commit表 查询name、result_date 关联t_mapping_project表的project_type查询）
 	login
 	manage
-		用户管理（chj）（增删改查分页）（密码重置）（查询单个）（条件查询-----> 用户名，部门，创建时间）
+		用户管理（chj）（增删改查分页）（密码重置）（查询单个）（条件查询-----> 用户名，部门，创建时间 √ ）
 				t_user  --->    t_dept  --->  t_dict
 		角色管理（chj）（增删改查分页）（查看修改单个封vo）（条件查询---> 角色，创建时间）
 				t_role   --->    t_user_role  ----> t_user  ---> t_menu
