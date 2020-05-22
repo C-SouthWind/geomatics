@@ -6,7 +6,7 @@
 		xx（Service / Controller / Mapper）
 	方法命名规则
 		表名+（crud）+ （By）+（xxx）
-
+		表名+（crud）+ xxx
 
 	home  
 		测绘单位（hxy）（t_mapping_unit表 查询 unit_name、owned_district、qualification_level字段）
