@@ -25,18 +25,20 @@
 		字典管理（chj）（增删改查分页）（条件查询---> 键，值，表名，字段）
 				t_dict
 	plotting
-		单位基本信息
+		单位基本信息 -->   unit
 			通用材料附件汇总（hxy）
-		数据统计
+		项目管理 --> project
+		项目汇交 --> concurrent
+		数据统计  -->    statistical
 			资质项目汇总统计（cwh）
 			单位信息统计（cwh）
 			人员设备汇总统计（cwh）
-		项目审核
+		项目审核  --> audit
 			项目信息（cwh）
 			汇交成果（cwh）
 			项目审核（cjl）
 			成果汇交审核（cjl）
-		单位审核
+		单位审核  --> unitAudit
 			单位列表（cjl）
 			单位修改待审核（cjl）
 			单位注册待审核（cjl）
