@@ -36,6 +36,17 @@ public class RedisService<T> {
         }
         return NO;
     }
+    
+    /** 方法描述 
+    * @Description: 查询key
+    * @Param: [key]
+    * @return: java.lang.String
+    * @Author: chj
+    * @Date: 2020/5/22
+    */
+    public String get(String key){
+        return jedisCluster.get(key);
+    }
 }
 
 

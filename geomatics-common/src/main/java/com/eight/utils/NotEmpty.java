@@ -28,6 +28,7 @@ public class NotEmpty {
     }
 
     public static Boolean integerNotEmpty(Integer integer){
-        return integer > 0 && null != integer ? true : false;
+        return null != integer && integer > 0 ? true : false;
     }
+
 }

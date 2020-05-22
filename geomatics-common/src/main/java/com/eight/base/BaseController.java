@@ -1,6 +1,7 @@
 package com.eight.base;
 
-import static com.chj.status.Status.*;
+
+import static com.eight.status.Status.*;
 
 /**
  * @author ：chj

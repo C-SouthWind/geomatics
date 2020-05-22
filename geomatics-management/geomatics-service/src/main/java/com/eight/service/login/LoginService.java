@@ -1,7 +1,7 @@
 package com.eight.service.login;
 
 
-import com.eight.login.UserMapper;
+import com.eight.mapper.login.UserMapper;
 import com.eight.model.login.User;
 import com.eight.redis.RedisService;
 import com.eight.utils.IDUtils;
