@@ -3,9 +3,9 @@
 
 
 	home  
-		测绘单位（hxy）
-		测绘项目（hxy）
-		测绘成果（hxy）
+		测绘单位（hxy）（t_mapping_unit表 查询 unit_name、owned_district、qualification_level字段）
+		测绘项目（hxy）（t_mapping_project表 查询project_name、project_type、start_date字段）
+		测绘成果（hxy）（t_result_commit表 查询name、result_date 关联t_mapping_project表的project_type查询）
 	login
 	manage
 		用户管理（chj）（增删改查分页）（密码重置）（查询单个）（条件查询-----> 用户名，部门，创建时间）
