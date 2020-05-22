@@ -2,6 +2,12 @@
 测绘项目
 
 
+	类命名规则
+		xx（Service / Controller / Mapper）
+	方法命名规则
+		表名+（crud）+ （By）+（xxx）
+
+
 	home  
 		测绘单位（hxy）（t_mapping_unit表 查询 unit_name、owned_district、qualification_level字段）
 		测绘项目（hxy）（t_mapping_project表 查询project_name、project_type、start_date字段）
@@ -35,12 +41,6 @@
 			单位修改待审核（cjl）
 			单位注册待审核（cjl）
 
-
-
-	类命名规则
-		xx（Service / Controller / Mapper）
-	方法命名规则
-		表名+（crud）+ （By）+（xxx）
 
 
 
