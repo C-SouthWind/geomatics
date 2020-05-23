@@ -30,5 +30,8 @@ public class NotEmpty {
     public static Boolean integerNotEmpty(Integer integer){
         return null != integer && integer > 0 ? true : false;
     }
+    public static Boolean longNotEmpty(Long l){
+        return null != l && l > 0 ? true : false;
+    }
 
 }

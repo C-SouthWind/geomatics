@@ -15,10 +15,10 @@ import java.util.Map;
 /**
  * @author ：chj
  * @date ：Created in 2020/5/22 15:09
- * @params :
+ * @params :      系统管理   用户管理
  */
 @RestController
-@RequestMapping("/manage")
+@RequestMapping("/user")
 public class UserController extends BaseController {
 
     @Autowired

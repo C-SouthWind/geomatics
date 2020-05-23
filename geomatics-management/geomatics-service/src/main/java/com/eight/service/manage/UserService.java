@@ -1,6 +1,5 @@
 package com.eight.service.manage;
 
-import com.eight.base.ResultData;
 import com.eight.mapper.login.UserMapper;
 import com.eight.model.login.User;
 import com.eight.redis.RedisService;
@@ -11,7 +10,6 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
@@ -43,7 +41,6 @@ public class UserService {
             if (NotEmpty.integerNotEmpty(i)) {
                 return i;
             }
-            return null;
         }
         return null;
     }
@@ -59,11 +56,12 @@ public class UserService {
     */
     public Integer userUpdateByUser( User user){
         if (NotEmpty.objectNotEmpty(user)) {
+            user.setCreateTime(GainDate.getDate());
+            user.setToken(IDUtils.getUUID());
             int i = userMapper.updateByPrimaryKey(user);
             if (NotEmpty.integerNotEmpty(i)) {
                 return i;
             }
-            return null;
         }
         return null;
     }
@@ -83,7 +81,6 @@ public class UserService {
             if (NotEmpty.objectNotEmpty(user1)) {
                 return user1;
             }
-            return null;
         }
         return null;
     }
@@ -104,7 +101,6 @@ public class UserService {
             if (NotEmpty.integerNotEmpty(insert)) {
                 return insert;
             }
-            return null;
         }
         return null;
     }
@@ -125,14 +121,12 @@ public class UserService {
             if (NotEmpty.integerNotEmpty(delete)) {
                 return delete;
             }
-            return null;
         }
         return null;
     }
 
 
-
-                                       /** 方法描述
+    /** 方法描述
    * @Description: 分页条件查询
     *                   系统管理--->用户管理       user表
    * @Param: [map, redisService]
@@ -141,26 +135,28 @@ public class UserService {
    * @Date: 2020/5/22
    */
     public PageInfo<User>  userSelectPage(Map map, RedisService redisService){
-        String   username = null;
-        Integer  deptId = null;
         //非空判断
         if (NotEmpty.mapNotEmpty(map)) {
                 //拿到map中的值
-            Integer  pageNo =  Integer.parseInt(map.get("pageNo").toString());
-            Integer  pageSize = Integer.parseInt(map.get("pageSize").toString());
-             username = map.get("username").toString();
-             deptId = Integer.parseInt(map.get("deptId").toString());
+            Object un = map.get("username");
+            Object di = map.get("deptId");
+            Object pn = map.get("pageNo");
+            Object ps = map.get("pageSize");
+            String username = NotEmpty.objectNotEmpty(un) ? un.toString() : null;
+            Integer deptId = NotEmpty.objectNotEmpty(di) ? Integer.parseInt(di.toString()) : null;
+            Integer pageNo = NotEmpty.objectNotEmpty(pn) ? Integer.parseInt(pn.toString()) : null;
+            Integer pageSize = NotEmpty.objectNotEmpty(ps) ? Integer.parseInt(ps.toString()) : null;
             if (NotEmpty.integerNotEmpty(pageNo) && NotEmpty.integerNotEmpty(pageSize)) {
                 //判断是否分页
                 if (pageNo > 0 && pageSize > 0) {
                     return selectPage(pageNo, pageSize,username,deptId);
                 }
-                //默认第一页  每页十条 无条件
-               return selectPage(1,10,username,deptId);
             }
+            //默认第一页  每页十条 无条件
+            return selectPage(1,10,username,deptId);
         }
         //默认第一页  每页十条 无条件
-        return selectPage(1,10,username,deptId);
+        return selectPage(1,10,null,null);
     }
 
 

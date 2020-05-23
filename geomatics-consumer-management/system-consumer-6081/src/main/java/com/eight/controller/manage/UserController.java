@@ -6,10 +6,7 @@ import com.eight.service.EightService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -19,6 +16,7 @@ import java.util.Map;
  * @params :
  */
 @RestController
+@RequestMapping("/user")
 @Api(value = "系统管理 -->用户管理" ,tags = "用户管理接口")
 public class UserController {
     @Autowired
@@ -33,7 +31,7 @@ public class UserController {
      * @Date: 2020/5/22
      */
     @PostMapping("/userResetPassword")
-    @ApiOperation(value = "系统管理 -->用户管理",notes = "密码重置")
+    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表 密码重置")
     public ResultData userResetPassword(@RequestBody User user){
         return eightService.userResetPassword(user);
     }
@@ -47,8 +45,8 @@ public class UserController {
     * @Date: 2020/5/22
     */
     @PostMapping("/userSelectPage")
-    @ApiOperation(value = "系统管理 -->用户管理",notes = "条件分页查询")
-    ResultData userSelectPage(@RequestParam Map map){
+    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表 条件分页查询")
+    public ResultData userSelectPage(@RequestParam Map map){
          return eightService.userSelectPage(map);
     }
 
@@ -62,8 +60,8 @@ public class UserController {
      * @Date: 2020/5/22
      */
     @PostMapping("/userDeleteByuser")
-    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表对象删除用户")
-    ResultData userDeleteByuser(@RequestBody User user){
+    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表 删除用户")
+    public ResultData userDeleteByuser(@RequestBody User user){
             return eightService.userDeleteByuser(user);
     }
 
@@ -77,8 +75,8 @@ public class UserController {
      * @Date: 2020/5/22
      */
     @PostMapping("/userInsertByUser")
-    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表对象新增用户")
-    ResultData userInsertByUser(@RequestParam User user){
+    @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表 新增用户")
+    public ResultData userInsertByUser(@RequestBody User user){
         return eightService.userInsertByUser(user);
     }
 
@@ -93,7 +91,7 @@ public class UserController {
      */
     @PostMapping("/userSelectOneByUser")
     @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表  查询单个信息")
-    ResultData userSelectOneByUser(@RequestBody User user){
+    public ResultData userSelectOneByUser(@RequestBody User user){
         return eightService.userSelectOneByUser(user);
     }
 
@@ -108,7 +106,7 @@ public class UserController {
      */
     @PostMapping("/userUpdateByUser")
     @ApiOperation(value = "系统管理 -->用户管理",notes = "根据user表  修改信息")
-    ResultData userUpdateByUser(@RequestBody User user){
+    public ResultData userUpdateByUser(@RequestBody User user){
         return eightService.userUpdateByUser(user);
     }
 }
