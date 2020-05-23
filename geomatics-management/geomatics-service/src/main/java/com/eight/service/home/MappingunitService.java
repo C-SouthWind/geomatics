@@ -45,13 +45,17 @@ public class MappingunitService {
 
 
         if (NotEmpty.mapNotEmpty(map)) {
-            unitName = map.get("unitName").toString();
-            ownedDistrict = map.get("ownedDistrict").toString();
-            qualificationLevel = map.get("qualificationLevel").toString();
+            Object nu = map.get("unitName");
+            Object od = map.get("ownedDistrict");
+            Object ql = map.get("qualificationLevel");
+            unitName = NotEmpty.objectNotEmpty(nu) ? nu.toString(): null;
+            ownedDistrict = NotEmpty.objectNotEmpty(od) ? od.toString(): null;
+            qualificationLevel = NotEmpty.objectNotEmpty(ql) ? ql.toString(): null;
+
         }
             return conditionsSelect(unitName,ownedDistrict,qualificationLevel);
     }
-    
+
 
 //    /**
 //    * @Description:
