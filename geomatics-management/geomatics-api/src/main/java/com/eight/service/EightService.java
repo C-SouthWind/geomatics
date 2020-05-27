@@ -1,22 +1,36 @@
 package com.eight.service;
 
-import com.eight.model.home.Mappingunit;
+import com.eight.base.ResultData;
 import com.eight.model.login.User;
+import com.eight.model.manage.Dept;
+import com.eight.model.manage.Dict;
+import com.eight.model.manage.Menu;
+import com.eight.model.manage.Role;
+import com.eight.utils.NotEmpty;
 import com.eight.vo.TokenVo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author ：chj
  * @date ：Created in 2020/5/15 20:32
  * @params :
  */
-@FeignClient(value = "system-interface")
+@FeignClient(value = "system-interface-provider")
 public interface EightService {
 
-  /** 方法描述
+    /**-------------------------------- 登录管理----->日志管理-----------------------------------------------*/
+
+
+
+
+    /** 方法描述
      * @Description: 执行登录操作
      * @Param: [user]
      * @return: com.chj.vo.TokenVo
@@ -25,6 +39,16 @@ public interface EightService {
      */
     @PostMapping("/doLogin")
     TokenVo doLogin(@RequestBody User user);
+
+   /** 方法描述 
+   * @Description: 添加登录日志信息
+   * @Param: [map]
+   * @return: com.eight.base.ResultData
+   * @Author: chj
+   * @Date: 2020/5/27
+   */
+    @PostMapping("loginAddByMap")
+    ResultData loginAddByMap(@RequestBody Map map);
 
 /**-------------------------------- 系统管理----->用户管理-----------------------------------------------*/
 
@@ -285,15 +309,7 @@ public interface EightService {
     @PostMapping("/roleSelectOneByRole")
     ResultData roleSelectOneByRole(@RequestBody Role role);
 
-    /**-------------------------------- xx管理----->xx管理-----------------------------------------------*/
 
-    /** 
-    * @Description: 查询 测绘单位
-    * @Param:  
-    * @return:  
-    * @Author: hxy 
-    * @Date: 2020/5/23 
-    */
-    @GetMapping("/selectMappingunit")
-    TokenVo selectMappingunit(@RequestBody Mappingunit mappingunit);
+    /**-------------------------------- xx管理----->xxx管理-----------------------------------------------*/
+
 }

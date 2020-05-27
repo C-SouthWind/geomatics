@@ -1,6 +1,7 @@
 package com.eight.controller.login;
 
 
+import com.eight.annotation.LoginLogAnnotation;
 import com.eight.base.BaseController;
 import com.eight.base.ResultData;
 import com.eight.model.login.User;
@@ -32,6 +33,7 @@ public class LoginController extends BaseController {
     */
     @PostMapping("/doLogin")
     @ApiOperation(value = "登录功能", notes = "用户执行登录功能")
+    @LoginLogAnnotation(operationType = "登录操作",operationName = "管理员登录")
     public ResultData doLogin(User user) {
         TokenVo tokenVo = eightService.doLogin(user);
         return tokenVo.getIfSuccess()?super.loginSuccess(tokenVo.getToken()):super.loginFailed();
