@@ -29,6 +29,20 @@ public interface EightService {
 
 
 
+  /** 方法描述
+    * @Description: 文件上传
+    * @Param: [file]
+    * @return: java.lang.Boolean
+    * @Author: chj
+    * @Date: 2020/5/29
+    */
+    @PostMapping(value = "/upload",
+            consumes = MediaType.MULTIPART_FORM_DATA_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    Boolean uploadFile(@RequestBody MultipartFile file);
+
+
+
 
     /** 方法描述
      * @Description: 执行登录操作
