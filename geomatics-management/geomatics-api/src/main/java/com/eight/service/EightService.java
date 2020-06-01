@@ -322,7 +322,59 @@ public interface EightService {
      */
     @PostMapping("/roleSelectOneByRole")
     ResultData roleSelectOneByRole(@RequestBody Role role);
+    
+     /**-------------------------------- 测绘管理----->查询单位基本信息-----------------------------------------------*/
+    
+    /**
+    * @Description: 查询单位基本信息
+    * @Param:
+    * @return:
+    * @Author: hxy
+    * @Date: 2020/5/29
+    */
+    @PostMapping("/selectUnit")
+    ResultData selectUnit(@RequestBody Unit unit);
 
+    /**
+    * @Description: 查询法人信息
+    * @Param:
+    * @return:
+    * @Author: hxy
+    * @Date: 2020/5/29
+    */
+    @PostMapping("/selectPrincipal")
+    ResultData selectPrincipal(@RequestBody Principal principal);
+
+    /**
+    * @Description: 查询技术人员信息
+    * @Param:
+    * @return:
+    * @Author: hxy
+    * @Date: 2020/5/29
+    */
+    @PostMapping("/selectTechnicist")
+    ResultData selectTechnicist(@RequestBody Technicist technicist);
+
+    /**
+    * @Description: 查询仪器设备
+    * @Param:
+    * @return:
+    * @Author: hxy
+    * @Date: 2020/5/29
+    */
+    @PostMapping("/selectEquipment")
+    ResultData selectEquipment(@RequestBody Equipment equipment);
+
+    /**
+     * @Description: 查询特殊岗位
+     * @Param:
+     * @return:
+     * @Author: hxy
+     * @Date: 2020/5/30
+     */
+
+    @PostMapping("/selectSpecialPost")
+    ResultData selectSpecialPost(@RequestBody SpecialPost specialpost);
 
     /**-------------------------------- xx管理----->xxx管理-----------------------------------------------*/
 
