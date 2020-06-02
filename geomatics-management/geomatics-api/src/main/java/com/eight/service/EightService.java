@@ -6,13 +6,16 @@ import com.eight.model.manage.Dept;
 import com.eight.model.manage.Dict;
 import com.eight.model.manage.Menu;
 import com.eight.model.manage.Role;
+import com.eight.model.plotting.unit.*;
 import com.eight.utils.NotEmpty;
 import com.eight.vo.TokenVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Map;
