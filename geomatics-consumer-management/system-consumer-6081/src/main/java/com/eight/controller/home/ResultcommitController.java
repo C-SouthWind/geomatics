@@ -25,7 +25,7 @@ public class ResultcommitController extends BaseController {
     @PostMapping("/selectResultcommit")
     @ApiOperation(value = "查询功能", notes = "用户查询测绘成果功能")
     public ResultData selectResultcommit(Resultcommit resultcommit) {
-        return eightService.selectResultcommit(resultcommit);
-
+       // return eightService.selectResultcommit(resultcommit);
+        return null;
     }
 }

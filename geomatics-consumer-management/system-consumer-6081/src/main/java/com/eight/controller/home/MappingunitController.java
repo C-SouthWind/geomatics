@@ -28,7 +28,8 @@ public class MappingunitController extends BaseController {
     @GetMapping("/selectMappingunit")
     @ApiOperation(value = "查询功能", notes = "用户查询测绘单位功能")
     public ResultData selectMappingunit(Mappingunit mappingunit) {
-        TokenVo tokenVo = eightService.selectMappingunit(mappingunit);
-        return tokenVo.getIfSuccess()?super.selectSuccess(tokenVo.getToken()):super.selectFailed();
+       // TokenVo tokenVo = eightService.selectMappingunit(mappingunit);
+       // return tokenVo.getIfSuccess()?super.selectSuccess(tokenVo.getToken()):super.selectFailed();
+        return null;
     }
 }

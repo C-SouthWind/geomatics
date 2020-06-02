@@ -27,8 +27,8 @@ public class MappingprojectController extends BaseController {
     @PostMapping ("/selectMappingproject")
     @ApiOperation(value = "查询功能", notes = "用户查询测绘项目功能")
     public ResultData selectMappingproject(Mappingproject mappingproject) {
-        return eightService.selectMappingproject(mappingproject);
-
+       // return eightService.selectMappingproject(mappingproject);
+        return null;
     }
 
 }
