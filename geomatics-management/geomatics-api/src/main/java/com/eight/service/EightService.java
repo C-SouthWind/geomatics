@@ -379,39 +379,6 @@ public interface EightService {
     @PostMapping("/selectSpecialPost")
     ResultData selectSpecialPost(@RequestBody SpecialPost specialpost);
 
-    /**-------------------------------- 系统主页----->测绘单位、测绘项目、测绘成果-----------------------------------------------*/
-    
-    /** 
-    * @Description: 查询 测绘单位
-    * @Param:  
-    * @return:  
-    * @Author: hxy 
-    * @Date: 2020/5/23 
-    */
-    @GetMapping("/selectMappingunit")
-    TokenVo selectMappingunit(@RequestBody Mappingunit mappingunit);
-    
-    /** 
-    * @Description:  查询测绘项目
-    * @Param:  
-    * @return:  
-    * @Author: hxy 
-    * @Date: 2020/5/25 
-    */
-    @PostMapping("/selectMappingproject")
-    ResultData selectMappingproject(@RequestBody Mappingproject mappingproject);
-
-    /**
-    * @Description: 查询测绘成果
-    * @Param:
-    * @return:
-    * @Author: hxy
-    * @Date: 2020/5/26
-    */
-    @PostMapping("/selectResultcommit")
-    ResultData selectResultcommit(@RequestBody Resultcommit resultcommit);
-
-
     /**-------------------------------- xx管理----->xxx管理-----------------------------------------------*/
 
 }
