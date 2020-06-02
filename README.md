@@ -69,7 +69,7 @@ geomatics
 			geomatics-model
 			geomatics-service
 
-		cehui-provider-management（生产者父级项目）
+		geomatics-provider-management（生产者父级项目）
 			system-provdier-8081
 
-		cehui-zuul（路由网关）
+		geomatics-zuul（路由网关）
