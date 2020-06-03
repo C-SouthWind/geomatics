@@ -7,7 +7,7 @@
 	方法命名规则
 		表名+（crud）+ （By）+（xxx）
 		表名+（crud）+ xxx
-	redis命名规则
+	redis命名规则 
 		表名+ （crud）+ 个人姓名
 
 	home  
