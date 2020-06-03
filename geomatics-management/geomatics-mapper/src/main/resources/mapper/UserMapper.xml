@@ -18,4 +18,9 @@
     <result column="type" property="type" jdbcType="CHAR" />
     <result column="token" property="token" jdbcType="VARCHAR" />
   </resultMap>
+
+  <select id="userSelectByUsernameAndUserPassword" parameterType="com.eight.model.login.User" resultType="User">
+    select * from
+    t_user where username = #{username} and password = #{password} limit 1
+  </select>
 </mapper>

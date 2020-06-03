@@ -9,4 +9,6 @@ import tk.mybatis.mapper.common.Mapper;
  * @params :
  */
 public interface UserMapper extends Mapper<User> {
+
+    User userSelectByUsernameAndUserPassword(User user);
 }

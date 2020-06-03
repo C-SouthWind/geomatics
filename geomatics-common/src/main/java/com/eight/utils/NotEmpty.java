@@ -24,7 +24,7 @@ public class NotEmpty {
     }
 
     public static Boolean objectNotEmpty(Object o){
-        return null != o && !"".equals(o) ? true : false;
+        return null != o  ? true : false;
     }
 
     public static Boolean integerNotEmpty(Integer integer){

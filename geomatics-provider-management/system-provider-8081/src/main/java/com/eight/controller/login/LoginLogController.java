@@ -5,12 +5,10 @@ import com.eight.base.ResultData;
 import com.eight.model.login.LoginLog;
 import com.eight.service.login.LoginLogService;
 import com.eight.utils.Map2BeanUtils;
+import com.eight.utils.Map2Object;
 import com.eight.utils.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -36,9 +34,9 @@ public class LoginLogController extends BaseController {
     @PostMapping("/loginAddByMap")
     public ResultData loginAddByMap(@RequestBody Map map){
         Integer add = null;
-        LoginLog loginLog = Map2BeanUtils.map2Bean(map, LoginLog.class);
+        LoginLog o =(LoginLog) Map2Object.mapToBean(map, LoginLog.class);
         try {
-             add = loginLogService.add(loginLog);
+            add = loginLogService.add(o);
         } catch (Exception e) {
             e.printStackTrace();
         }

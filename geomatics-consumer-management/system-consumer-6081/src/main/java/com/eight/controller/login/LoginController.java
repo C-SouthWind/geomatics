@@ -12,6 +12,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :
  */
 @RestController
+@RequestMapping("/login")
 @Api(value = "登录信息",tags = "用户登录接口")
 public class LoginController extends BaseController {
     @Autowired
@@ -35,8 +38,9 @@ public class LoginController extends BaseController {
     @PostMapping("/doLogin")
     @ApiOperation(value = "登录功能", notes = "用户执行登录功能")
     @LoginLogAnnotation(operationType = "登录操作",operationName = "管理员登录")
-    public ResultData doLogin(User user) {
+    public ResultData doLogin(@RequestBody  User user) {
         TokenVo tokenVo = eightService.doLogin(user);
+        System.out.println(tokenVo.toString());
         return tokenVo.getIfSuccess()?super.loginSuccess(tokenVo.getToken()):super.loginFailed();
     }
 }

@@ -54,7 +54,7 @@ public interface EightService {
      * @Author: chj
      * @Date: 2020/5/15
      */
-    @PostMapping("/doLogin")
+    @PostMapping("/login/doLogin")
     TokenVo doLogin(@RequestBody User user);
 
    /** 方法描述 
@@ -64,8 +64,8 @@ public interface EightService {
    * @Author: chj
    * @Date: 2020/5/27
    */
-    @PostMapping("loginAddByMap")
-    ResultData loginAddByMap(@RequestBody Map map);
+    @PostMapping("/loginLog/loginAddByMap")
+    ResultData loginAddByMap(@RequestBody  Map map);
 
 /**-------------------------------- 系统管理----->用户管理-----------------------------------------------*/
 

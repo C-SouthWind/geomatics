@@ -34,16 +34,24 @@ public class LoginService {
         TokenVo tokenVo = new TokenVo();
         tokenVo.setIfSuccess(false);
         if (null != user) {
-             User u = userMapper.selectOne(user);
+            User u = userMapper.userSelectByUsernameAndUserPassword(user);
+            //User u = userMapper.selectOne(user);
             if (null != u) {
                 String token = IDUtils.getUUID();
                 u.setToken(token);
-	u.setCreateTime(GainDate.getDate());
+	            u.setCreateTime(GainDate.getDate());
                int updateResult = userMapper.updateByPrimaryKey(u);
+                System.out.println("updateResult-------------"+updateResult);
                 if (updateResult > 0) {
-                    String setResult = redisService.set(String.valueOf(u.getId()), token, XX, NX, 1800);
-                    if ("OK".equals(setResult.toUpperCase()) || "1".equals(setResult)) {
-                        return tokenVo.setIfSuccess(true).setToken(token).setRedisKey(String.valueOf(u.getId()));
+                    try {
+                        String setResult = redisService.set(String.valueOf(u.getId()), token, XX, NX, 1800);
+                        if ("OK".equals(setResult.toUpperCase()) || "1".equals(setResult)) {
+                            return tokenVo.setIfSuccess(true).setToken(token).setRedisKey(String.valueOf(u.getId()));
+                        } else {
+                            System.out.println("Redis存储Token失败");
+                        }
+                    }catch (Exception e){
+                        return tokenVo.setIfSuccess(true).setToken(token).setRedisKey(null);
                     }
                 }
             }
