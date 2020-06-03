@@ -41,7 +41,6 @@ public class LoginService {
                 u.setToken(token);
 	            u.setCreateTime(GainDate.getDate());
                int updateResult = userMapper.updateByPrimaryKey(u);
-                System.out.println("updateResult-------------"+updateResult);
                 if (updateResult > 0) {
                     try {
                         String setResult = redisService.set(String.valueOf(u.getId()), token, XX, NX, 1800);

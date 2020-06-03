@@ -26,7 +26,6 @@ public class LoginLogService extends BaseService<LoginLog> {
     public Integer loginLogInsertByLoginLog(LoginLog loginLog){
         if (NotEmpty.objectNotEmpty(loginLog)) {
             Integer integer = loginLogService.loginLogInsertByLoginLog(loginLog);
-            System.out.println("222222222222222222222222"+NotEmpty.integerNotEmpty(integer));
             if (NotEmpty.integerNotEmpty(integer)) {
                 return integer;
             }
