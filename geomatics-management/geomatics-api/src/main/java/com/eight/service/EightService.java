@@ -335,7 +335,7 @@ public interface EightService {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectUnit")
+    @PostMapping("/plotting/unit/selectUnit")
     ResultData selectUnit(@RequestBody Unit unit);
 
     /**
@@ -345,7 +345,7 @@ public interface EightService {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectPrincipal")
+    @PostMapping("/plotting/unit/selectPrincipal")
     ResultData selectPrincipal(@RequestBody Principal principal);
 
     /**
@@ -355,7 +355,7 @@ public interface EightService {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectTechnicist")
+    @PostMapping("/plotting/unit/selectTechnicist")
     ResultData selectTechnicist(@RequestBody Technicist technicist);
 
     /**
@@ -365,7 +365,7 @@ public interface EightService {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectEquipment")
+    @PostMapping("/plotting/unit/selectEquipment")
     ResultData selectEquipment(@RequestBody Equipment equipment);
     
     /**
@@ -376,9 +376,11 @@ public interface EightService {
      * @Date: 2020/5/30
      */
 
-    @PostMapping("/selectSpecialPost")
+    @PostMapping("/plotting/unit/selectSpecialPost")
     ResultData selectSpecialPost(@RequestBody SpecialPost specialpost);
-    /**-------------------------------- 主页系统----->测绘单位、测绘项目、测绘成果----------------------------------------------*/
+    
+    
+     /**-------------------------------- 主页系统----->测绘单位、测绘项目、测绘成果----------------------------------------------*/
     
     /** 
     * @Description: 查询 测绘单位
@@ -387,8 +389,8 @@ public interface EightService {
     * @Author: hxy 
     * @Date: 2020/5/23 
     */
-    @GetMapping("/selectMappingunit")
-    TokenVo selectMappingunit(@RequestBody Mappingunit mappingunit);
+    @PostMapping("/mappingunit/selectMappingunit")
+    ResultData selectMappingunit(@RequestParam Map map);
     
     /** 
     * @Description:  查询测绘项目
@@ -397,8 +399,8 @@ public interface EightService {
     * @Author: hxy 
     * @Date: 2020/5/25 
     */
-    @PostMapping("/selectMappingproject")
-    ResultData selectMappingproject(@RequestBody Mappingproject mappingproject);
+    @PostMapping("/mappingproject/selectMappingproject")
+    ResultData selectMappingproject(@RequestBody Map map);
 
     /**
     * @Description: 查询测绘成果
@@ -407,8 +409,8 @@ public interface EightService {
     * @Author: hxy
     * @Date: 2020/5/26
     */
-    @PostMapping("/selectResultcommit")
-    ResultData selectResultcommit(@RequestBody Resultcommit resultcommit);
+    @PostMapping("/resultcommit/selectResultcommit")
+    ResultData selectResultcommit(@RequestParam Map map);
 
     /**-------------------------------- xx管理----->xxx管理-----------------------------------------------*/
 
