@@ -19,7 +19,7 @@ import java.util.Map;
  * @date ：Created in 2020/5/28 22:03
  * @params :  UnitController
  */
-@RequestMapping("/plotting/unit")
+@RequestMapping("/plotting")
 @RestController
 public class UnitController extends BaseController {
     @Autowired
@@ -35,7 +35,7 @@ public class UnitController extends BaseController {
     * @Author: hxy
     * @Date: 2020/5/28
     */
-    @PostMapping("/selectUnit")
+    @PostMapping("/unit/selectUnit")
     public ResultData selectUnit(){
         List<Unit> unit = unitService.selectUnit(redisService);
         if (null == unit) {

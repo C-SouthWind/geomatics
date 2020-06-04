@@ -19,7 +19,7 @@ import java.util.List;
  * @date ：Created in 2020/5/29 17:22
  * @params :  PrincipalController
  */
-@RequestMapping("/plotting/unit")
+@RequestMapping("/plotting")
 @RestController
 public class PrincipalController extends BaseController {
     @Autowired
@@ -35,7 +35,7 @@ public class PrincipalController extends BaseController {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectPrincipal")
+    @PostMapping("/unit/selectPrincipal")
     public ResultData selectPrincipal(){
         List<Principal> principal = principalService.selectPrincipal(redisService);
         if (null == principal) {

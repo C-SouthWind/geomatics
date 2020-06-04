@@ -18,7 +18,7 @@ import java.util.List;
  * @date ：Created in 2020/5/30 13:43
  * @params :  SpecialPostController
  */
-@RequestMapping("/plotting/unit")
+@RequestMapping("/plotting")
 @RestController
 public class SpecialPostController extends BaseController {
     @Autowired
@@ -34,7 +34,7 @@ public class SpecialPostController extends BaseController {
     * @Author: hxy
     * @Date: 2020/5/30
     */
-    @PostMapping("/selectSpecialPost")
+    @PostMapping("/unit/selectSpecialPost")
     public ResultData selectSpecialPost(){
         List<SpecialPost> specialpost = specialPostService.selectSpecialPost(redisService);
         if (null == specialpost) {

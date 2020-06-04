@@ -18,7 +18,7 @@ import java.util.List;
  * @date ：Created in 2020/5/29 20:50
  * @params :  TechnicistController
  */
-@RequestMapping("/plotting/unit")
+@RequestMapping("/plotting")
 @RestController
 public class TechnicistController extends BaseController {
     @Autowired
@@ -34,7 +34,7 @@ public class TechnicistController extends BaseController {
     * @Author: hxy
     * @Date: 2020/5/29
     */
-    @PostMapping("/selectTechnicist")
+    @PostMapping("/unit/selectTechnicist")
     public ResultData selectTechnicist(){
         List<Technicist> technicist = technicistService.selectTechnicist(redisService);
         if (null == technicist) {
