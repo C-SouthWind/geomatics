@@ -6,10 +6,7 @@ import com.eight.model.home.Resultcommit;
 import com.eight.redis.RedisService;
 import com.eight.service.home.ResultcommitService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -37,10 +34,10 @@ public class ResultcommitController extends BaseController {
     */
     @PostMapping("/selectResultcommit")
     public ResultData selectResultcommit(@RequestParam Map map){
-        List<Resultcommit> resultcommit = resultcommitService.selectResultcommit(map, redisService);
-        if (null == resultcommit) {
+        List<Resultcommit> resultcommits = resultcommitService.selectResultcommit(map, redisService);
+        if (null == resultcommits) {
             return selectFailed();
         }
-        return selectSuccess(resultcommit);
+        return selectSuccess(resultcommits);
     }
 }

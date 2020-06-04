@@ -4,8 +4,12 @@ import com.eight.base.BaseController;
 import com.eight.base.ResultData;
 import com.eight.model.home.Mappingproject;
 import com.eight.model.home.Mappingunit;
+import com.eight.model.login.User;
+import com.eight.model.manage.Dict;
 import com.eight.redis.RedisService;
 import com.eight.service.home.MappingprojectService;
+import com.eight.utils.NotEmpty;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -35,10 +39,10 @@ public class MappingprojectController extends BaseController {
     */
     @PostMapping("/selectMappingproject")
     public ResultData selectMappingproject(@RequestParam Map map){
-        List<Mappingproject> mappingproject = mappingprojectService.selectMappingproject(map, redisService);
-        if (null == mappingproject) {
+        List<Mappingproject> mappingprojects = mappingprojectService.selectMappingproject(map, redisService);
+        if (null == mappingprojects) {
             return selectFailed();
         }
-        return selectSuccess(mappingproject);
+        return selectSuccess(mappingprojects);
     }
 }

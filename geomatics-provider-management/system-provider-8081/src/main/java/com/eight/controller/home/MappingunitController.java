@@ -36,7 +36,7 @@ public class MappingunitController extends BaseController {
     * @Date: 2020/5/22 
     */
 
-    @GetMapping("/selectMappingunit")
+    @PostMapping("/selectMappingunit")
     public ResultData selectMappingunit(@RequestParam Map map){
         List<Mappingunit> mappingunit = mappingunitService.selectMappingunit(map, redisService);
         if (null == mappingunit) {
