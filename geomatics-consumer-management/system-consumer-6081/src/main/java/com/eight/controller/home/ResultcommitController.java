@@ -2,14 +2,13 @@ package com.eight.controller.home;
 
 import com.eight.base.BaseController;
 import com.eight.base.ResultData;
-import com.eight.model.home.Mappingproject;
-import com.eight.model.home.Resultcommit;
 import com.eight.service.EightService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 /**
  * @author ：hxy
@@ -17,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :  ResultcommitController
  */
 @RestController
+@RequestMapping("/resultcommit")
 @Api(value = "查询测绘成果",tags = "查询测绘成果接口")
 public class ResultcommitController extends BaseController {
     @Autowired
@@ -24,8 +24,8 @@ public class ResultcommitController extends BaseController {
 
     @PostMapping("/selectResultcommit")
     @ApiOperation(value = "查询功能", notes = "用户查询测绘成果功能")
-    public ResultData selectResultcommit(Resultcommit resultcommit) {
-       // return eightService.selectResultcommit(resultcommit);
-        return null;
+    public ResultData selectResultcommit(@RequestParam Map map) {
+       return eightService.selectResultcommit(map);
+
     }
 }
