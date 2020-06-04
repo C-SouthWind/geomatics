@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :  PrincipalController
  */
 @RestController
+@RequestMapping("/plotting")
 @Api(value = "查询法人信息",tags = "查询法人信息接口")
 public class PrincipalController extends BaseController {
     @Autowired
     private EightService eightService;
 
-    @PostMapping("/selectPrincipal")
+    @PostMapping("/unit/selectPrincipal")
     @ApiOperation(value = "查询功能", notes = "法人信息功能")
     public ResultData selectPrincipal(Principal principal) {
         return eightService.selectPrincipal(principal);

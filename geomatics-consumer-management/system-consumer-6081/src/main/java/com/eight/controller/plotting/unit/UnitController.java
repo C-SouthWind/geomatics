@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :  UnitController
  */
 @RestController
+@RequestMapping("/plotting")
 @Api(value = "查询单位基本信息",tags = "查询单位基本信息接口")
 public class UnitController extends BaseController {
     @Autowired
     private EightService eightService;
 
-    @PostMapping("/selectUnit")
+    @PostMapping("/unit/selectUnit")
     @ApiOperation(value = "查询功能", notes = "用户单位基本信息功能")
     public ResultData selectUnit(Unit unit) {
         return eightService.selectUnit(unit);

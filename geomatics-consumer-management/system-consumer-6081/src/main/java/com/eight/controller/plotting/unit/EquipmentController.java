@@ -8,6 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -16,12 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :  EquipmentController
  */
 @RestController
+@RequestMapping("/plotting")
 @Api(value = "查询仪器设备信息",tags = "查询仪器设备信息接口")
 public class EquipmentController extends BaseController {
     @Autowired
     private EightService eightService;
 
-    @PostMapping("/selectEquipment")
+    @PostMapping("/unit/selectEquipment")
     @ApiOperation(value = "查询功能", notes = "查询仪器设备信息功能")
     public ResultData selectEquipment(Equipment equipment) {
         return eightService.selectEquipment(equipment);

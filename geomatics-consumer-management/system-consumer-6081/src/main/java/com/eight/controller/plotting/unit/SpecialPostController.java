@@ -9,6 +9,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
  * @params :  SpecialPostController
  */
 @RestController
+@RequestMapping("/plotting")
 @Api(value = "查询特殊岗位信息",tags = "查询特殊岗位信息接口")
 public class SpecialPostController extends BaseController {
     @Autowired
     private EightService eightService;
 
-    @PostMapping("/selectSpecialPost")
+    @PostMapping("/unit/selectSpecialPost")
     @ApiOperation(value = "查询功能", notes = "查询特殊岗位信息功能")
     public ResultData selectSpecialPost(SpecialPost specialpost) {
         return eightService.selectSpecialPost(specialpost);
